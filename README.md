@@ -31,6 +31,10 @@ undurchsichtige Einzelstücke. Das hier ist nachvollziehbar gebaut.
 Der Workflow läuft **montags**, ermittelt das neueste signal-cli-Release selbst
 und baut beide Architekturen. Dependabot hält Basis-Image und Actions aktuell.
 
+Bricht der Wochenbau, ist die wahrscheinlichste Ursache eine signal-cli-Fassung
+mit neuer libsignal, für die bei `exquo/signal-libs-build` noch kein Artefakt
+liegt. Dann wartet man einen Lauf ab oder pinnt `SIGNAL_CLI_VERSION`.
+
 ## Benutzung
 
 Der Entrypoint ist `signal-cli`, es laufen also die gewohnten Unterbefehle.
