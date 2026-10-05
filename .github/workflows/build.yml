@@ -45,7 +45,9 @@ jobs:
       - uses: docker/build-push-action@v6
         with:
           context: .
-          platforms: linux/arm64,linux/amd64
+          # Der Docker-Exporter kann keine Manifestliste laden, darum baut
+          # ein PR nur arm64 - dafuer laeuft der Smoke-Test vor dem Merge.
+          platforms: ${{ github.event_name == 'pull_request' && 'linux/arm64' || 'linux/arm64,linux/amd64' }}
           build-args: SIGNAL_CLI_VERSION=${{ steps.upstream.outputs.version }}
           push: ${{ github.event_name != 'pull_request' }}
           load: ${{ github.event_name == 'pull_request' }}
