@@ -1,0 +1,19 @@
+version: 2
+updates:
+  # Das Basis-Image im Dockerfile. Die signal-cli-Fassung ermittelt der
+  # Workflow selbst und braucht Dependabot nicht.
+  - package-ecosystem: docker
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    commit-message:
+      prefix: build
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    commit-message:
+      prefix: ci
